@@ -73,3 +73,11 @@ git clone https://github.com/aurelienfvre/SAE401.git ecolearn
 ```bash
 composer install
 ```
+Pour lancer le serveur du projet
+```bash
+php -S 0.0.0.0:8000 -t public
+```
+URL du projet
+```bash
+http://localhost:8000
+```
