@@ -67,6 +67,16 @@ npm install -g npm@10.4.0
 ```bash
 npm install
 ```
+```bash
+apt-get update && apt-get install -y libicu-dev
+```
+```bash
+docker-php-ext-configure intl
+```
+```bash
+docker-php-ext-install intl
+```
+
 Clone du projet Symfony/Vue
 ```bash
 git clone https://github.com/aurelienfvre/SAE401.git ecolearn
