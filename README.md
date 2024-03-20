@@ -143,6 +143,12 @@ composer install
 ```bash
 npm install
 ```
+```bash
+npm install axios
+```
+```bash
+npm install vue-router@4 
+```
 Pour lancer le serveur du projet
 ```bash
 php -S 0.0.0.0:8000 -t public
