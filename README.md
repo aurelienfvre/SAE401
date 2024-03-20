@@ -27,7 +27,16 @@ services:
     volumes:
       - .:/var/www/symfony
     working_dir: /var/www/symfony
-    command: bash -c "apt-get update && apt-get install -y git unzip libpng-dev libonig-dev libxml2-dev curl gnupg && docker-php-ext-install pdo pdo_mysql && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && curl -sS https://deb.nodesource.com/setup_14.x | bash - && apt-get install -y nodejs && tail -f /dev/null"
+    command: >
+      bash -c "apt-get update && apt-get install -y git unzip libpng-dev libonig-dev libxml2-dev curl gnupg libicu-dev 
+      && docker-php-ext-install pdo pdo_mysql
+      && docker-php-ext-configure intl
+      && docker-php-ext-install intl
+      && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+      && curl -sS https://deb.nodesource.com/setup_14.x | bash -
+      && apt-get install -y nodejs
+      && tail -f /dev/null"
+
     ports:
       - "8000:8000"
     depends_on:
@@ -38,7 +47,6 @@ services:
     ports:
       - "1080:80"
       - "1025:25"
-
 
 ```
 Commande à éxécuter dans l'ordre
