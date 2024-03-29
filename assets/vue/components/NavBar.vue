@@ -127,4 +127,83 @@ export default {
   background-color: transparent;
   color: #333;
 }
+
+.login-btn {
+  --color: #333; /* Couleur de base du bouton */
+  margin-left: 1rem;
+  padding: 0.2rem 1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-top: 15px;
+  background-color: transparent;
+  color: var(--color);
+  border: 1px solid var(--color);
+  text-decoration: none;
+  font-size: 15px;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.5s;
+  font-weight: 500;
+  z-index: 1;
+}
+
+.login-btn::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background: var(--color);
+  height: 150px;
+  width: 200px;
+  border-radius: 50%;
+  top: 100%;
+  left: -100%;
+  transition: all 0.7s;
+}
+
+.login-btn:hover {
+  color: #fff;
+}
+
+.login-btn:hover::before {
+  top: -30px;
+  left: -30px;
+}
+
+.login-btn:active::before {
+  background: #333; /* Couleur de background lors du clic */
+  transition: background 0s;
+}
+
+.login-btn > span {
+  display: inline-block;
+  transition: transform 0.25s, opacity 0.25s;
+  opacity: 1;
+}
+
+.login-btn::after {
+  content: attr(data-content);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.25s, transform 0.25s;
+  transform: translateY(100%);
+  color: #fff; /* Couleur du texte au hover */
+}
+
+.login-btn:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.login-btn:hover > span {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+/* Suppression des styles d'animation pour .language-btn et .login-btn */
 </style>
