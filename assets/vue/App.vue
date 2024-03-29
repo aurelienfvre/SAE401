@@ -1,19 +1,20 @@
 <template>
-  <div>
-    <h1>{{ message }}</h1>
-    <v-btn append="$vuetify">
-      j'ai envie de chier tellement c'etait long à configurer
-    </v-btn>
+  <div id="app">
+    <router-view />
+    <!-- Chaque composant de route s'affiche ici -->
   </div>
-
 </template>
 
 <script>
+// Pas besoin d'importer CardContainer ici
 export default {
-  data() {
-    return {
-      message: 'Bonjour Vue! dsdfss'
-    }
-  }
-}
+  name: "App",
+};
 </script>
+<style>
+/* Vous pouvez définir le style de fond ici s'il est spécifique à une page */
+.content {
+  padding: 20px;
+  /* Ajoutez plus de styles pour votre contenu ici */
+}
+</style>
