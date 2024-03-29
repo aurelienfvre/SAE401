@@ -29,6 +29,46 @@
         technique, sens artistique et vision stratégique pour propulser EcoLearn
         au-devant de la scène éducative environnementale.
       </p>
+
+      <h2 class="section-title">Notre Mission</h2>
+      <p>
+        EcoLearn s'engage à briser les barrières de l'apprentissage traditionnel
+        en intégrant des techniques de gamification pour rendre l'éducation
+        écologique accessible, captivante et mémorable. Nous aspirons à éveiller
+        la curiosité et à encourager une action positive pour notre planète
+        parmi un public mondial. Notre plateforme est conçue pour être un espace
+        où apprendre rime avec plaisir et où chaque utilisateur peut devenir un
+        acteur du changement.
+      </p>
+      <div class="values-container">
+        <div class="value-section">
+          <h2 class="value-title">Éducation</h2>
+          <p>
+            Chez EcoLearn, l'éducation est au cœur de notre mission. Nous
+            proposons une approche novatrice pour apprendre et comprendre les
+            enjeux environnementaux actuels, rendant l'apprentissage aussi
+            enrichissant qu'engageant.
+          </p>
+        </div>
+        <div class="vertical-hr"></div>
+        <div class="value-section">
+          <h2 class="value-title">Éco-conception</h2>
+          <p>
+            Notre plateforme est conçue avec une empreinte écologique minimale.
+            Nous intégrons les principes d'éco-conception dès le début du
+            processus de développement, assurant ainsi un impact environnemental
+            réduit.
+          </p>
+        </div>
+        <div class="vertical-hr"></div>
+        <div class="value-section">
+          <h2 class="value-title">Ludique</h2>
+          <p>
+            L'apprentissage par le jeu est au cœur de l'expérience EcoLearn.
+            Nous croyons que la gamification est essentielle pour engager les
+            utilisateurs et faciliter une compréhension profonde des sujets
+            traités.
+          </p>
         </div>
       </div>
       <div class="image">
