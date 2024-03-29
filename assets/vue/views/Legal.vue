@@ -1,9 +1,9 @@
 <template>
-  <CardContainer height="200vh">
+  <CardContainer height="230vh">
     <CardPage
         :image="legalImage"
-        height="74rem"
-        innerHeight="66rem"
+        height="86rem"
+        innerHeight="78rem"
         width="80%"
         innerBgColor="#fff"
     >
@@ -75,6 +75,7 @@
 import CardContainer from "@/components/CardContainer.vue";
 import CardPage from "@/components/CardPage.vue";
 import Footer from "@/components/Footer.vue";
+
 import legalImage from "@/assets/legal_image.webp";
 </script>
 
@@ -84,6 +85,7 @@ import legalImage from "@/assets/legal_image.webp";
   padding: 0 0 40px 0;
   font-weight: 500;
 }
+
 .section-title {
   font-weight: bold;
   margin-top: 20px;
