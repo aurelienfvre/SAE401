@@ -21,6 +21,13 @@
         <router-link to="/contact" class="nav-item" data-content="Contact"
         ><span>Contact</span></router-link
         >
+      </div>
+      <div class="nav-right-items">
+        <button class="language-btn" data-content="fr/en">fr/en</button>
+        <router-link to="/login" class="login-btn" data-content="Se connecter"
+        ><span>Se connecter</span></router-link
+        >
+      </div>
     </nav>
   </header>
 </template>
