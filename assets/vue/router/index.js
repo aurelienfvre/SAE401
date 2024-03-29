@@ -39,6 +39,17 @@ const router = createRouter({
             name: "Legal",
             component: () => import("../views/Legal.vue"),
         },
+        {
+            path: "/ocean",
+            name: "Ocean",
+            component: () => import("../views/Ocean.vue"),
+        },
+        {
+            path: "/jungle",
+            name: "Jungle",
+            component: () => import("../views/Jungle.vue"),
+        },
+
     ],
     scrollBehavior(to, from, savedPosition) {
         return { top: 0, behavior: "smooth" };
