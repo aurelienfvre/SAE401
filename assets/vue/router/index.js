@@ -49,7 +49,16 @@ const router = createRouter({
             name: "Jungle",
             component: () => import("../views/Jungle.vue"),
         },
-
+        {
+            path: "/desert",
+            name: "Desert",
+            component: () => import("../views/Desert.vue"),
+        },
+        {
+            path: "/arctic",
+            name: "Arctic",
+            component: () => import("../views/Arctic.vue"),
+        },
     ],
     scrollBehavior(to, from, savedPosition) {
         return { top: 0, behavior: "smooth" };
