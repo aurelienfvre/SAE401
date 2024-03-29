@@ -10,6 +10,7 @@
         "sass-loader": "^14.1.1",
         "vue": "^3.4.21",
         "vue-loader": "^17.4.2",
+        "vue-router": "^4.3.0",
         "vue-template-compiler": "^2.7.16",
         "webpack": "^5.74.0",
         "webpack-cli": "^4.10.0",
@@ -24,6 +25,11 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "@lottiefiles/vue-lottie-player": "^1.1.0",
+        "axios": "^1.6.8",
+        "lottie-web": "^5.12.2",
+        "matter-js": "^0.19.0",
+        "vue3-lottie": "^3.3.0",
         "vuetify": "^3.5.6"
     }
 }

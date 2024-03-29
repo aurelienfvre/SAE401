@@ -3,3 +3,10 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+vue_router:
+    path: /{vueRouting}
+    controller: App\Controller\HomeController::index
+    requirements:
+        vueRouting: "^(?!api|_(profiler|wdt)).*"
+    defaults:
+        vueRouting: null
