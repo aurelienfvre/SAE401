@@ -1,0 +1,188 @@
+{
+    "navbar": {
+        "home": "Home",
+        "education": "Education",
+        "about": "About",
+        "contact": "Contact",
+        "login": "Login"
+    },
+    "footer": {
+        "education": "Education",
+        "about": "About",
+        "contact": "Contact",
+        "legal": "Legal Notice",
+        "question": "Have a question?",
+        "writeUs": "Write to us!"
+    },
+    "button": {
+        "fun": "Fun",
+        "awareness": "Raise Awareness",
+        "act": "Act",
+        "enjoy": "Enjoy",
+        "learn": "Learn",
+        "ecology": "Ecology",
+        "education": "Education"
+    },
+    "homeFirstGrid": {
+        "title": "Forests, deserts, oceans, Antarctica: ecosystems essential to our survival",
+        "learnText": "Learn while having fun",
+        "detailsText": "See more details"
+    },
+    "homeSecondGrid": {
+        "title": "Exploring the marine oceans",
+        "detailsText": "See more details",
+        "mainImageAlt": "Main Image",
+        "handImageAlt": "Hands with a flower",
+        "secondaryImageAlt": "Secondary Image"
+    },
+    "playbuttons": {
+        "play": "Play"
+    },
+    "contact": {
+        "title": "Contact Us!",
+        "subtitle": "Have a question? We're here to help.",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "emailAddress": "Email Address",
+        "yourMessage": "Your Message",
+        "placeholder": {
+            "firstName": "First Name",
+            "lastName": "Last Name",
+            "email": "yourname@mail.com",
+            "message": "Your message here..."
+        },
+        "sendButton": "Send",
+        "sendHover": "Send"
+    },
+    "home": {
+        "explore": "Explore the beauty of nature and learn the importance of ecology in a fun and interactive way.",
+        "ecolearnIntro": "EcoLearn is an interactive educational website that immerses you in the various ecosystems of our planet, such as",
+        "learnFun": "Come learn while having fun! Discover the wonders of our earth.",
+        "ecosystems": {
+            "ocean": "the oceans",
+            "jungle": "the jungle",
+            "forest": "the forest",
+            "desert": "the desert",
+            "arctic": "and the arctic"
+        },
+        "cards": {
+            "ocean": {
+                "title": "Oceans",
+                "subtitle": "All about the marine world, fish, corals, protected species.. in quiz form",
+                "button": "Let's go!"
+            },
+            "jungle": {
+                "title": "Jungle/Forest",
+                "subtitle": "All about the world of fauna and flora, forests.. in quiz form",
+                "button": "Let's go!"
+            },
+            "desert": {
+                "title": "Desert",
+                "subtitle": "All about the world of the desert with specific animals, the ecology of this ecosystem.. in quiz form",
+                "button": "Let's go!"
+            },
+            "arctic": {
+                "title": "Arctic",
+                "subtitle": "All about the Arctic issues, climate, endangered animals.. in quiz form",
+                "button": "Let's go!"
+            }
+        }
+    },
+    "about": {
+        "discover": "Discover EcoLearn",
+        "visionTitle": "Our Vision",
+        "visionContent": "At the heart of innovation and commitment to a sustainable future, EcoLearn revolutionizes ecological learning. We democratize access to environmental education through an immersive platform exploring the richness of planetary ecosystems. From oceans to arid deserts, EcoLearn is your gateway to discovering and understanding the natural wonders and current ecological challenges.",
+        "pillarsTitle": "The Pillars of EcoLearn",
+        "pillarsContent": "Aurélien Fèvre, the technical mastermind, Karelle Truchy, the visual artist who brings our ideas to life, and Célia Khiev, the creative muse, make up the founding trio of EcoLearn. Driven by a common passion for green technology and innovation, we merge technical expertise, artistic sense, and strategic vision to propel EcoLearn to the forefront of environmental education.",
+        "missionTitle": "Our Mission",
+        "missionContent": "EcoLearn is committed to breaking down the barriers of traditional learning by integrating gamification techniques to make ecological education accessible, engaging, and memorable. We aim to spark curiosity and encourage positive action for our planet among a global audience. Our platform is designed to be a space where learning is fun, and every user can become an agent of change.",
+        "values": {
+            "educationTitle": "Education",
+            "educationContent": "At EcoLearn, education is at the heart of our mission. We offer an innovative approach to learning and understanding current environmental issues, making learning as enriching as it is engaging.",
+            "ecoDesignTitle": "Eco-Design",
+            "ecoDesignContent": "Our platform is designed with a minimal ecological footprint. We integrate eco-design principles from the beginning of the development process, ensuring a reduced environmental impact.",
+            "funTitle": "Fun",
+            "funContent": "Learning through play is at the heart of the EcoLearn experience. We believe gamification is key to engaging users and facilitating a deep understanding of the topics covered."
+        },
+        "teamAlt": "A passionate team"
+    },
+    "ocean": {
+        "title": "Ocean",
+        "content": {
+            "title": "All about the <span style=\"color: #3a7ca3\">marine</span>",
+            "paragraph1": "The marine world, vast and mysterious, harbors an incredible diversity of life. From the abyssal depths to colorful coral reefs, each ecosystem plays a crucial role in the ecological balance of our planet.",
+            "paragraph2": "Marine fauna and flora have adapted to extreme living conditions, developing unique forms of life. Oceans are also essential for regulating Earth's climate, absorbing a large amount of carbon dioxide and producing oxygen.",
+            "paragraph3": "Unfortunately, the marine world faces multiple threats, including pollution, overfishing, and climate change. Protecting the oceans is therefore vital for the health of our planet and the well-being of future generations."
+        }
+    },
+    "jungle": {
+        "title": "Jungle/Forest",
+        "content": {
+            "title": "All about the <span style=\"color: #c1dd13\">jungle and forests</span>",
+            "paragraph1": "The jungle and tropical forest are rich and dense ecosystems, characterized by exceptional biodiversity. They are home to numerous species of plants, animals, and microorganisms, some of which have not yet been discovered by science.",
+            "paragraph2": "These habitats play a crucial role in regulating the global climate by absorbing significant amounts of CO2. Tropical forests are also vital for local communities that depend on their resources for subsistence.",
+            "paragraph3": "Despite their importance, jungles and forests are severely threatened by deforestation, mainly due to agriculture, logging, and urban expansion. Preserving these areas is essential to maintain the biological diversity and ecological balance of our planet."
+        }
+    },
+    "desert": {
+        "title": "Desert",
+        "content": {
+            "title": "All about the <span style=\"color: #d88bca\">desert</span>",
+            "paragraph1": "Deserts are vast and arid lands, where rainfall is extremely rare, creating a harsh environment for fauna and flora. However, these regions possess a unique beauty and harbor a surprising variety of life adapted to these extreme conditions.",
+            "paragraph2": "Beyond their sterile appearance, deserts play an important role in the planet's ecology. They influence global weather patterns and serve as locations for scientific research, providing insights into survival in extreme conditions.",
+            "paragraph3": "Conserving deserts is crucial to protect their unique biodiversity and the natural resources they provide. Despite their apparent resilience, deserts remain vulnerable to the impacts of climate change and human intervention, such as mining and overgrazing."
+        }
+    },
+    "arctic": {
+        "title": "Arctic",
+        "content": {
+            "title": "All about the <span style=\"color: #abcdff\">Arctic</span>",
+            "paragraph1": "The Arctic, a world of ice and mysteries, plays a crucial role in the climate balance of our planet. This polar region, characterized by its extremely cold temperatures, is home to resilient fauna and breathtaking landscapes, from vast expanses of ice to the northern lights.",
+            "paragraph2": "Despite its austere beauty, the Arctic is at the forefront of environmental concerns. Climate change is affecting this region at an alarming rate, leading to ice melt, which has global consequences, including sea level rise and changes to natural habitats.",
+            "paragraph3": "Preserving the Arctic is essential, not only for its unique biodiversity but also for the well-being of our planet. International efforts to minimize human impact and combat climate change are vital to safeguarding this region for future generations."
+        }
+    },
+    "legal": {
+        "title": "Legal Notice",
+        "generalInfoTitle": "General Information",
+        "generalInfo": "EcoLearn is an educational initiative based in Troyes, France, within the Troyes University of Technology. Designed and developed by a team of three enthusiasts, our goal is to facilitate access to environmental education for everyone.",
+        "creditsTitle": "Credits",
+        "credits": "All resources used by EcoLearn are either created by our team or properly credited according to their license terms.",
+        "intellectualPropertyTitle": "Intellectual Property Rights",
+        "intellectualProperty": "The content provided by EcoLearn is protected by intellectual property laws and remains the exclusive property of its creators.",
+        "personalDataProtectionTitle": "Personal Data Protection",
+        "personalDataProtection": "We take privacy very seriously and are committed to protecting the personal data of our users.",
+        "securityTitle": "Security",
+        "security": "The security of our platform is a top priority, ensuring a safe experience for all our users.",
+        "applicableLawTitle": "Applicable Law",
+        "applicableLaw": "The use of our site and services is governed by French law, regardless of the place of use.",
+        "liabilityLimitationTitle": "Limitation of Liability",
+        "liabilityLimitation": "By using EcoLearn, users acknowledge that our team cannot be held responsible for any inappropriate use of the content or services offered.",
+        "updateTitle": "Update",
+        "update": "We reserve the right to update these legal notices at any time, according to the evolution of our platform and regulations.",
+        "trackingDataTitle": "Statistical Tracking Data",
+        "trackingData": "We use statistical data to monitor and continually improve the user experience on our platform."
+    },
+    "login": {
+        "title": "Log In",
+        "readyToPlay": "Ready to have fun?",
+        "emailAddress": "Email Address",
+        "emailPlaceholder": "example@mail.com",
+        "password": "Password",
+        "passwordPlaceholder": "",
+        "noAccount": "Don’t have an account?",
+        "createAccount": "Create an account!"
+    },
+    "register": {
+        "title": "Create an Account",
+        "joinUs": "Join us and have fun!",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "username": "Username",
+        "emailAddress": "example@mail.com",
+        "password": "",
+        "haveAccount": "Already have an account?",
+        "login": "Log In"
+    }
+
+}
