@@ -1,5 +1,15 @@
 controllers:
-    resource:
-        path: ../src/Controller/
-        namespace: App\Controller
+    resource: ../src/Controller/
     type: attribute
+
+vue_router:
+    path: /{vueRouting}
+    controller: App\Controller\HomeController::index
+    requirements:
+        vueRouting: "^(?!api|_(profiler|wdt)).*"
+    defaults:
+        vueRouting: null
+
+# Ajout pour LexikJWTAuthenticationBundle
+api_login_check:
+    path: /api/login_check
