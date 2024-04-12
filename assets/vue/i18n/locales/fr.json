@@ -183,6 +183,20 @@
         "password": "",
         "haveAccount": "As-tu déjà un compte?",
         "login": "Connectes-toi"
+    },
+    "profile": {
+        "title": "Profil",
+        "username": "Nom Utilisateur",
+        "email": "Email",
+        "edit": "Modifier",
+        "update": "Actualiser",
+        "logout": "Déconnexion",
+        "cancel": "Annuler",
+        "firstName": "Prénom",
+        "lastName": "Nom",
+        "password": "Mot de passe",
+        "show": "Afficher",
+        "hide": "Cacher"
     }
 
 }
