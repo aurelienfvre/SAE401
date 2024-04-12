@@ -1,6 +1,15 @@
 import { createRouter, createWebHistory } from "vue-router";
 const BASE_URL = process.env.BASE_URL || '/';
 
+function requireAuth(to, from, next) {
+  const isAuthenticated = !!localStorage.getItem('authToken');
+  if (!isAuthenticated) {
+    next('/login');
+  } else {
+    next();
+  }
+}
+
 const router = createRouter({
   history: createWebHistory(BASE_URL),
   routes: [
@@ -43,21 +52,25 @@ const router = createRouter({
       path: "/ocean",
       name: "Ocean",
       component: () => import("../views/Ocean.vue"),
+      beforeEnter: requireAuth,
     },
     {
       path: "/jungle",
       name: "Jungle",
       component: () => import("../views/Jungle.vue"),
+      beforeEnter: requireAuth,
     },
     {
       path: "/desert",
       name: "Desert",
       component: () => import("../views/Desert.vue"),
+      beforeEnter: requireAuth,
     },
     {
       path: "/arctic",
       name: "Arctic",
       component: () => import("../views/Arctic.vue"),
+      beforeEnter: requireAuth,
     },
     {
       path: "/profile",
@@ -121,5 +134,6 @@ const router = createRouter({
     return { top: 0, behavior: "smooth" };
   },
 });
+
 
 export default router;
