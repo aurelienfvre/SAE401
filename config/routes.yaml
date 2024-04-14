@@ -13,3 +13,8 @@ vue_router:
 # Ajout pour LexikJWTAuthenticationBundle
 api_login_check:
     path: /api/login_check
+# config/routes.yaml
+update_user_progress:
+    path: /api/user_progresses/{id}/update
+    controller: App\Controller\UserProgressController::update
+    methods: [POST]
