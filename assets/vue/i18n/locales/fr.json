@@ -48,7 +48,7 @@
         "placeholder": {
             "firstName": "Prénom",
             "lastName": "Nom",
-            "email": "votrenom@mail.com",
+            "email": "Adresse Email",
             "message": "Votre message ici..."
         },
         "sendButton": "Envoyer",
@@ -167,7 +167,7 @@
         "title": "Connectes-toi",
         "readyToPlay": "Prêt à t'amuser ?",
         "emailAddress": "Adresse Email",
-        "emailPlaceholder": "exemple@mail.com",
+        "emailPlaceholder": "Adresse Email",
         "password": "Mot de passe",
         "passwordPlaceholder": "",
         "noAccount": "Tu n’as pas de compte?",

@@ -33,7 +33,6 @@ const app = createApp(App);
 // Créer une instance de votre store de langue et le fournir à l'application
 const languageStore = useLanguageStore();
 app.provide('languageStore', languageStore);
-
 app.use(vuetify);
 app.use(router);
 app.use(i18n);

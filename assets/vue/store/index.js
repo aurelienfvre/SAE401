@@ -15,16 +15,27 @@ export default createStore({
         quizFinished: false,
         showTransition: false,
         transitionType: 'correct', // 'correct' ou 'incorrect'
+        loading: false,
     },
     getters: {
         currentQuestion: (state) => state.questions[state.currentQuestionIndex],
         currentAnswers: (state) => state.currentAnswers,
-        progressPercentage: (state) => state.questions.length > 0 ? (state.currentQuestionIndex / state.questions.length) * 100 : 0,
+        progressPercentage: (state) => {
+            return (state.currentQuestionIndex / state.questions.length) * 100;
+        },
         isQuizFinished: (state) => state.quizFinished
+
     },
     mutations: {
+
+        RESET_EXPLANATION(state) {
+            state.showExplanation = false;  // Assurez-vous que cette propriété est bien gérée dans votre état
+        },
         SET_QUIZZES(state, quizzes) {
             state.quizzes = quizzes;
+        },
+        SET_LOADING(state, isLoading) {
+            state.loading = isLoading;
         },
         SET_SHOW_TRANSITION(state, { show, type }) {
             state.showTransition = show;
@@ -45,36 +56,55 @@ export default createStore({
         SET_CURRENT_ANSWERS(state, answers) {
             state.currentAnswers = answers;
         },
-        INCREMENT_SCORE(state) {
-            state.score++;
+        INCREMENT_SCORE(state, payload) {
+            if (payload.isCorrect) {
+                state.score++;
+            }
         },
         NEXT_QUESTION(state) {
             if (state.currentQuestionIndex < state.questions.length - 1) {
                 state.currentQuestionIndex++;
-                state.currentAnswers = []; // Nettoyez les réponses actuelles lorsque vous passez à la question suivante
             } else {
                 state.quizFinished = true;
             }
+            // Mettre à jour la progression ici plutôt que lors de la validation de la réponse
+            state.progressPercentage = ((state.currentQuestionIndex + 1) / state.questions.length) * 100;
         },
         RESET_QUIZ(state) {
             state.currentQuestionIndex = 0;
             state.score = 0;
             state.quizFinished = false;
-            state.currentAnswers = []; // Nettoyez les réponses lors de la réinitialisation du quiz
+            state.currentAnswers = [];
+            state.progressPercentage = 0;
+            state.showExplanation = false;
         },
         FINISH_QUIZ(state) {
             state.quizFinished = true;
-        }
+            state.progressPercentage = 100; // Assurez-vous d'atteindre 100%
+            if (state.selectedAnswer && state.selectedAnswer.isCorrect) {
+                state.score++;
+            }
+        },
+
     },
     actions: {
         async fetchQuizData({ commit, dispatch }, quizId) {
+            commit('SET_LOADING', true); // Activer l'indicateur de chargement
             try {
                 const response = await axios.get(`/quizzes/${quizId}`);
                 commit('SET_CURRENT_QUIZ', response.data);
-                dispatch('fetchQuestions', response.data.questions);
+                // Attendre que toutes les questions et leurs réponses soient chargées
+                await dispatch('fetchQuestions', response.data.questions);
             } catch (error) {
                 console.error('Error fetching quiz data:', error);
             }
+        },
+        validateAnswer({ commit, dispatch }, { answer }) {
+            commit('SET_SHOW_TRANSITION', { show: true, type: answer.isCorrect ? 'correct' : 'incorrect' });
+            setTimeout(() => {
+                dispatch('updateProgress', { isCorrect: answer.isCorrect });
+                commit('SET_SHOW_TRANSITION', { show: false, type: '' });
+            }, 2000);
         },
         async fetchQuestions({ commit, dispatch }, questions) {
             try {
@@ -83,11 +113,15 @@ export default createStore({
                 );
                 const questionData = questionResponses.map(res => res.data);
                 commit('SET_QUESTIONS', questionData);
-                questionData.forEach(question => {
-                    dispatch('fetchAnswersForQuestion', question.id);
-                });
+                // Assurer que toutes les réponses des questions sont chargées
+                await Promise.all(questionData.map(question => {
+                    return dispatch('fetchAnswersForQuestion', question.id);
+                }));
             } catch (error) {
                 console.error('Error fetching questions:', error);
+            }
+            finally {
+                commit('SET_LOADING', false);  // Désactiver l'indicateur de chargement seulement ici
             }
         },
         async fetchAnswersForQuestion({ commit }, questionId) {
@@ -107,10 +141,8 @@ export default createStore({
                 .catch(error => console.error('Error fetching user progress:', error));
         },
         updateProgress({ state, commit }, isCorrect) {
-            if (isCorrect) {
-                commit('INCREMENT_SCORE');
-            }
             commit('NEXT_QUESTION');
+
 
             try {
                 axios.put(`/user_progresses/${state.userProgress.id}`, {
@@ -121,12 +153,17 @@ export default createStore({
                 console.error('Failed to update user progress:', error);
             }
         },
-        finishQuiz({ commit }) {
-            commit('FINISH_QUIZ');
+        nextQuestion({ commit }) {
+            commit('NEXT_QUESTION');
+            commit('RESET_EXPLANATION');  // Assurez-vous que l'explication est cachée pour la prochaine question
         },
-        resetQuiz({ commit }) {
+        finishQuiz({ commit, state }, answer) {
+            commit('FINISH_QUIZ', { isCorrect: answer && answer.isCorrect });
+        },
+        resetQuiz({ commit, dispatch }) {
             commit('RESET_QUIZ');
-        }
+            dispatch('fetchQuizData', state.currentQuiz.id);
+        },
     }
 
 

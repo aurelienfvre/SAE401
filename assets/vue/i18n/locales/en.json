@@ -48,7 +48,7 @@
         "placeholder": {
             "firstName": "First Name",
             "lastName": "Last Name",
-            "email": "yourname@mail.com",
+            "email": "Email Address",
             "message": "Your message here..."
         },
         "sendButton": "Send",
@@ -167,7 +167,7 @@
         "title": "Log In",
         "readyToPlay": "Ready to have fun?",
         "emailAddress": "Email Address",
-        "emailPlaceholder": "example@mail.com",
+        "emailPlaceholder": "Email Address",
         "password": "Password",
         "passwordPlaceholder": "",
         "noAccount": "Don’t have an account?",
@@ -179,7 +179,7 @@
         "firstName": "First Name",
         "lastName": "Last Name",
         "username": "Username",
-        "emailAddress": "example@mail.com",
+        "emailAddress": "Email Address",
         "password": "",
         "haveAccount": "Already have an account?",
         "login": "Log In"
