@@ -1,10 +1,9 @@
 <template>
   <CardContainer height="60rem">
-    <CardPage width="80%" height="45rem" innerWidth="30rem" innerHeight="37rem" innerBgColor="#D88BCA" innerPosition="left" innerPadding="50px" textAlignment="left" :dualInnerContainers="true" innerWidthRight="85%"  >
+    <CardPage width="80%" height="45rem" innerWidth="30rem" innerHeight="37rem" innerBgColor="#D88BCA" innerPosition="left" innerPadding="50px" textAlignment="left" :dualInnerContainers="true" innerWidthRight="85%">
       <template #left>
         <div class="profile-page">
           <div v-if="!isEditing">
-            <!-- Affichage classique -->
             <img :src="previewImage" alt="Photo de profil" class="profile-picture"/>
             <h4>{{ $t('profile.username') }}: {{ user.pseudo }}</h4>
             <h4>{{ $t('profile.firstName') }}: {{ user.firstname }}</h4>
@@ -20,9 +19,9 @@
             </div>
           </div>
           <div v-else>
-
             <form @submit.prevent="updateProfile" class="edit-form">
               <img :src="previewImage" alt="Photo de profil" class="profile-picture-small" @click="clickFileInput"/>
+              <input type="file" ref="fileInput" @change="handleFileUpload" style="display: none;">
               <div class="form-group">
                 <label for="pseudo">{{ $t('profile.username') }}</label>
                 <input type="text" id="pseudo" v-model="user.pseudo">
@@ -78,6 +77,7 @@
   </CardContainer>
   <Footer />
 </template>
+
 
 <script setup>
 import { ref, onMounted } from 'vue';
@@ -378,6 +378,6 @@ textarea {
   border-radius: 10px;
   box-shadow: none;
   background-color: transparent;
-  color: #333;
+  color: #000;
 }
 </style>
