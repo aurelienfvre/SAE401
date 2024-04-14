@@ -1,20 +1,18 @@
 <template>
   <CardContainer height="140vh">
     <div class="flex-container">
-    <div ref="lottieContainerRef" class="lottie-animation"></div>
-
-
+      <div ref="lottieContainerRef" class="lottie-animation"></div>
       <div class="quiz-content">
         <div v-if="loading" class="loading">
           <p>Chargement en cours...</p>
         </div>
-        <div class="progress-bar">
-          <div :style="{ width: progressPercentage + '%' }" class="progress-bar-fill"></div>
-          <span>{{ Math.round(progressPercentage) }}%</span>
-        </div>
         <div v-else>
+          <div class="progress-bar">
+            <div :style="{ width: progressPercentage + '%' }" class="progress-bar-fill"></div>
+            <span>{{ Math.round(progressPercentage) }}%</span>
+          </div>
           <div class="quiz-wrap" v-if="currentQuiz && questions.length > 0 && !isQuizFinished">
-            <div class="quiz-container" v-if="currentQuiz && questions.length > 0 && !isQuizFinished">
+            <div class="quiz-container">
               <div>
                 <p class="question">{{ currentQuestion['content' + currentLocale] }}</p>
                 <div v-if="!showExplanation" class="answers-grid">
@@ -45,6 +43,7 @@
   </CardContainer>
   <Footer />
 </template>
+
 
 
 
