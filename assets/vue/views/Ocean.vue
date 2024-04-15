@@ -1,5 +1,5 @@
 <template>
-  <CardContainer height="140vh">
+  <CardContainer height="120vh">
     <div class="flex-container">
       <div ref="lottieContainerRef" class="lottie-animation"></div>
       <div class="quiz-content">
