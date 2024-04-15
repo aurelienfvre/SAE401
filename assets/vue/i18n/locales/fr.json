@@ -197,6 +197,20 @@
         "password": "Mot de passe",
         "show": "Afficher",
         "hide": "Cacher"
+    },
+    "quiz": {
+        "score": "Quiz terminé! Votre score",
+        "question": "Question",
+        "next": "Suivant",
+        "submit": "Valider",
+        "finish": "Terminer le quiz",
+        "correct": "Correct",
+        "incorrect": "Incorrect",
+        "congratulations": "Félicitations !",
+        "result": "Résultat",
+        "retry": "Recommencer",
+        "loading": "Chargement en cours..."
+
     }
 
 }

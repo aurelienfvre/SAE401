@@ -20,8 +20,10 @@
       </div>
       <div class="nav-right-items">
         <button class="language-btn" @click="toggleLanguage">
-          {{ languageStore.locale.value === 'fr' ? 'fr/en' : 'en/fr' }}
+          <span :class="{ 'underline': languageStore.locale.value === 'fr' }">fr</span>/
+          <span :class="{ 'underline': languageStore.locale.value === 'en' }">en</span>
         </button>
+
 
 
         <template v-if="isUserLoggedIn">
@@ -109,6 +111,9 @@ const toggleLanguage = () => {
   margin-top: 1rem;
   padding: 1rem;
   border-radius: 1.25rem;
+}
+.underline {
+  text-decoration: underline;
 }
 
 .navbar {

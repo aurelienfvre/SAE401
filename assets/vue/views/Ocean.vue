@@ -4,7 +4,7 @@
       <div ref="lottieContainerRef" class="lottie-animation"></div>
       <div class="quiz-content">
         <div v-if="loading" class="loading">
-          <p>Chargement en cours...</p>
+          <p>{{ $t('quiz.loading') }}</p>
         </div>
         <div v-else>
           <div class="progress-bar">
@@ -21,20 +21,20 @@
                        @click="toggleAnswer(answer)">
                     {{ answer['content' + currentLocale] }}
                   </div>
-                  <button class="validate-button" @click="validateAnswer" :disabled="!selectedAnswer">Valider</button>
+                  <button class="validate-button" @click="validateAnswer" :disabled="!selectedAnswer">{{ $t('quiz.submit') }}</button>
                 </div>
                 <div v-if="showExplanation" class="explanation-content">
                   <h3>{{ currentQuestion['explanationTitle' + currentLocale] }}</h3>
                   <p>{{ currentQuestion['explanationContent' + currentLocale] }}</p>
-                  <button v-if="hasNextQuestion" @click="nextQuestion" class="quiz-button">Suivant</button>
-                  <button v-else @click="finishQuiz" class="quiz-button">Terminer le quiz</button>
+                  <button v-if="hasNextQuestion" @click="nextQuestion" class="quiz-button">{{ $t('quiz.next') }}</button>
+                  <button v-else @click="finishQuiz" class="quiz-button">{{ $t('quiz.finish') }}</button>
                 </div>
               </div>
             </div>
           </div>
           <div v-else-if="isQuizFinished">
-            <p>Quiz terminé! Votre score : {{ score }}/{{ questions.length }}</p>
-            <button @click="restartQuiz">Recommencer</button>
+            <p>{{ $t('quiz.score') }} : {{ score }}/{{ questions.length }}</p>
+            <button @click="restartQuiz">{{ $t('quiz.retry') }}</button>
           </div>
         </div>
         <div v-if="showTransition" :class="['transition-sphere', transitionClass]"></div>
