@@ -85,12 +85,12 @@ onMounted(() => {
     watchEffect(() => {
       if (loading.value && !showExplanation.value) {
         console.log("Loading animation for loading state...");
-        loadAnimation('https://lottie.host/9e7a3715-231c-41f2-9a4a-97b46d336f1f/txNUgcdsnO.json', lottieContainerRef, true);
+        loadAnimation('https://lottie.host/27916bf9-c249-4680-af15-e2caddb52fd8/fsPGok7jbg.json', lottieContainerRef, true);
       } else if (showExplanation.value && selectedAnswer.value) {
         console.log("Loading explanation animation based on answer correctness...");
         const animationUrl = selectedAnswer.value.isCorrect
-            ? 'https://lottie.host/ce618da0-5fab-42a7-8323-d3595f332079/p3cvIR3U0p.json'
-            : 'https://lottie.host/1a90251d-ea43-475a-897b-10c29eb23d99/sSMtkY3gYC.json';
+            ? 'https://lottie.host/ce618da0-5fab-42a7-8323-d3595f332079/p3cvIR3U0p.json'  // Update this if you have a new URL
+            : 'https://lottie.host/1a90251d-ea43-475a-897b-10c29eb23d99/sSMtkY3gYC.json';  // Update this if you have a new URL
         loadAnimation(animationUrl, lottieContainerRef, false);
       }
     });
@@ -121,7 +121,7 @@ function loadAnimation(animationUrl, containerRef, loop = true) {
 watch(showExplanation, (newVal, oldVal) => {
   if (!newVal && oldVal && !loading.value) {
     console.log("Reverting to main quiz animation after explanation...");
-    loadAnimation('https://lottie.host/9e7a3715-231c-41f2-9a4a-97b46d336f1f/txNUgcdsnO.json', lottieContainerRef, true);
+    loadAnimation('https://lottie.host/27916bf9-c249-4680-af15-e2caddb52fd8/fsPGok7jbg.json', lottieContainerRef, true);
   }
 });
 
