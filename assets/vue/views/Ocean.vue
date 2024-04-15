@@ -198,7 +198,7 @@ function restartQuiz() {
 }
 
 .lottie-animation {
-  width: 30%;
+  width: 40%;
   height: 100vh; /* Définir une hauteur pour être sûr qu'elle n'est pas nulle */
   min-width: 200px;
 
