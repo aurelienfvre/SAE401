@@ -21,8 +21,12 @@ export default createStore({
         currentQuestion: (state) => state.questions[state.currentQuestionIndex],
         currentAnswers: (state) => state.currentAnswers,
         progressPercentage: (state) => {
-            return (state.currentQuestionIndex / state.questions.length) * 100;
+            // Vérifie que des questions sont chargées pour éviter la division par zéro
+            if (state.questions.length === 0) return 0;
+            // Décale l'index de 1 pour le calcul pour démarrer à 0% et finir à 100%
+            return ((state.currentQuestionIndex) / state.questions.length) * 100;
         },
+
         isQuizFinished: (state) => state.quizFinished
 
     },
@@ -54,6 +58,7 @@ export default createStore({
             state.questions = quiz.questions;
             state.currentQuestionIndex = 0;
             state.quizFinished = false;
+            state.progressPercentage = 0;
         },
         SET_QUESTIONS(state, questions) {
             state.questions = questions;
@@ -63,9 +68,10 @@ export default createStore({
         },
         INCREMENT_SCORE(state, payload) {
             if (payload.isCorrect) {
-                state.score++;
+                state.score += 1; // Incrémenter le score
             }
         },
+
         NEXT_QUESTION(state) {
             if (state.currentQuestionIndex < state.questions.length - 1) {
                 state.currentQuestionIndex++;
@@ -90,6 +96,7 @@ export default createStore({
                 state.score++;
             }
         },
+
 
     },
     actions: {

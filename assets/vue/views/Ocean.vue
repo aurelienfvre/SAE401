@@ -27,7 +27,7 @@
                   <h3>{{ currentQuestion['explanationTitle' + currentLocale] }}</h3>
                   <p>{{ currentQuestion['explanationContent' + currentLocale] }}</p>
                   <button v-if="hasNextQuestion" @click="nextQuestion" class="quiz-button">{{ $t('quiz.next') }}</button>
-                  <button v-else @click="finishQuiz" class="quiz-button">{{ $t('quiz.finish') }}</button>
+                  <button v-else @click="completeQuiz" class="quiz-button">{{ $t('quiz.finish') }}</button>
                 </div>
               </div>
             </div>
@@ -77,6 +77,12 @@ const showExplanation = ref(false);
 const loading = computed(() => store.state.loading);
 const selectedAnswer = ref(null);
 const lottieContainerRef = ref(null);
+const completeQuiz = () => {
+  store.dispatch('finishQuiz');
+  store.dispatch('nextQuestion'); // Assurez-vous que cette action ne provoque pas d'erreurs si c'est la dernière question
+};
+
+
 
 
 onMounted(() => {
@@ -145,11 +151,14 @@ function submitAnswer(answer) {
   store.commit('SET_SHOW_TRANSITION', { show: true, type: answer.isCorrect ? 'correct' : 'incorrect' });
   setTimeout(() => {
     showExplanation.value = true;
+    if (answer.isCorrect) { // S'assure que le score est incrémenté si la réponse est correcte
+      store.commit('INCREMENT_SCORE', { isCorrect: true });
+    }
     store.dispatch('updateProgress', { isCorrect: answer.isCorrect });
     store.commit('SET_SHOW_TRANSITION', { show: false, type: '' });
-  }, 2000); // Matches animation duration
-  console.log("Answer submitted and transitions handled.");
+  }, 2000);
 }
+
 
 function nextQuestion() {
   console.log("Moving to next question...");
