@@ -34,6 +34,11 @@ export default createStore({
         SET_QUIZZES(state, quizzes) {
             state.quizzes = quizzes;
         },
+        SHOW_EXPLANATION(state) {
+            state.showExplanation = true;
+            console.log("Explanation is now shown");
+        },
+
         SET_LOADING(state, isLoading) {
             state.loading = isLoading;
         },
@@ -56,22 +61,20 @@ export default createStore({
         SET_CURRENT_ANSWERS(state, answers) {
             state.currentAnswers = answers;
         },
-        INCREMENT_SCORE(state, isCorrect) {
-            if (isCorrect) {
+        INCREMENT_SCORE(state, payload) {
+            if (payload.isCorrect) {
                 state.score++;
             }
         },
         NEXT_QUESTION(state) {
             if (state.currentQuestionIndex < state.questions.length - 1) {
                 state.currentQuestionIndex++;
+                state.showExplanation = false; // Assurez-vous de cacher l'explication quand on passe à la prochaine question
             } else {
                 state.quizFinished = true;
             }
         },
-        UPDATE_PROGRESS(state) {
-            const step = 100 / state.questions.length;
-            state.progressPercentage = Math.min(state.progressPercentage + step, 100);
-        },
+
         RESET_QUIZ(state) {
             state.currentQuestionIndex = 0;
             state.score = 0;
@@ -83,7 +86,9 @@ export default createStore({
         FINISH_QUIZ(state) {
             state.quizFinished = true;
             state.progressPercentage = 100; // Assurez-vous d'atteindre 100%
-            // Assurez-vous de mettre à jour le score ici si nécessaire
+            if (state.selectedAnswer && state.selectedAnswer.isCorrect) {
+                state.score++;
+            }
         },
 
     },
@@ -102,9 +107,6 @@ export default createStore({
         validateAnswer({ commit, dispatch }, { answer }) {
             commit('SET_SHOW_TRANSITION', { show: true, type: answer.isCorrect ? 'correct' : 'incorrect' });
             setTimeout(() => {
-                if (answer.isCorrect) {
-                    commit('INCREMENT_SCORE', answer.isCorrect);
-                }
                 dispatch('updateProgress', { isCorrect: answer.isCorrect });
                 commit('SET_SHOW_TRANSITION', { show: false, type: '' });
             }, 2000);
@@ -147,23 +149,33 @@ export default createStore({
                 })
                 .catch(error => console.error('Error fetching user progress:', error));
         },
-        updateProgress({ commit }) {
-            commit('NEXT_QUESTION');
-            commit('UPDATE_PROGRESS');
-        },
-        nextQuestion({ commit, dispatch, state }) {
-            if (state.currentQuestionIndex < state.questions.length - 1) {
-                commit('NEXT_QUESTION');
-                dispatch('fetchAnswersForQuestion', state.questions[state.currentQuestionIndex].id);
-                commit('RESET_EXPLANATION');
-                commit('UPDATE_PROGRESS');
+        updateProgress({ state, commit }, { isCorrect }) {
+            if (state.userProgress && state.userProgress.id) {
+                axios.put(`/user_progresses/${state.userProgress.id}`, {
+                    score: state.score,
+                    progress: state.currentQuestionIndex
+                }).then(() => {
+                    commit('NEXT_QUESTION');
+                }).catch(error => console.error('Failed to update user progress:', error));
             } else {
-                dispatch('finishQuiz');
+                console.error('User progress ID is undefined');
             }
         },
-        finishQuiz({ commit }) {
-            commit('FINISH_QUIZ');
-            commit('UPDATE_PROGRESS');
+
+        nextQuestion({ commit, dispatch, state }) {
+            if (!state.isQuizFinished) {
+                commit('NEXT_QUESTION');
+                if (!state.isQuizFinished) {
+                    dispatch('fetchAnswersForQuestion', state.questions[state.currentQuestionIndex].id);
+                    commit('RESET_EXPLANATION'); // Assurez-vous de remettre à zéro toute explication affichée
+                }
+            }
+        },
+
+
+
+        finishQuiz({ commit, state }, answer) {
+            commit('FINISH_QUIZ', { isCorrect: answer && answer.isCorrect });
         },
         resetQuiz({ commit, dispatch }) {
             commit('RESET_QUIZ');

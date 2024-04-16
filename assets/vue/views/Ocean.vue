@@ -85,12 +85,12 @@ onMounted(() => {
     watchEffect(() => {
       if (loading.value && !showExplanation.value) {
         console.log("Loading animation for loading state...");
-        loadAnimation('https://lottie.host/0df1ac36-4e0a-48d7-87a8-3c4c1b5619fa/mtob88tlVY.json', lottieContainerRef, true);
+        loadAnimation('https://lottie.host/27916bf9-c249-4680-af15-e2caddb52fd8/fsPGok7jbg.json', lottieContainerRef, true);
       } else if (showExplanation.value && selectedAnswer.value) {
         console.log("Loading explanation animation based on answer correctness...");
         const animationUrl = selectedAnswer.value.isCorrect
-            ? 'https://lottie.host/ce618da0-5fab-42a7-8323-d3595f332079/p3cvIR3U0p.json'  // Update this if you have a new URL
-            : 'https://lottie.host/1a90251d-ea43-475a-897b-10c29eb23d99/sSMtkY3gYC.json';  // Update this if you have a new URL
+            ? 'https://lottie.host/27916bf9-c249-4680-af15-e2caddb52fd8/fsPGok7jbg.json'  // Update this if you have a new URL
+            : 'https://lottie.host/27916bf9-c249-4680-af15-e2caddb52fd8/fsPGok7jbg.json';  // Update this if you have a new URL
         loadAnimation(animationUrl, lottieContainerRef, false);
       }
     });
@@ -121,7 +121,7 @@ function loadAnimation(animationUrl, containerRef, loop = true) {
 watch(showExplanation, (newVal, oldVal) => {
   if (!newVal && oldVal && !loading.value) {
     console.log("Reverting to main quiz animation after explanation...");
-    loadAnimation('https://lottie.host/0df1ac36-4e0a-48d7-87a8-3c4c1b5619fa/mtob88tlVY.json', lottieContainerRef, true);
+    loadAnimation('https://lottie.host/27916bf9-c249-4680-af15-e2caddb52fd8/fsPGok7jbg.json', lottieContainerRef, true);
   }
 });
 
@@ -136,18 +136,9 @@ function toggleAnswer(answer) {
 
 function validateAnswer() {
   console.log("Validating answer:", selectedAnswer.value);
-  if (selectedAnswer.value) {
-    store.commit('SET_SHOW_TRANSITION', { show: true, type: selectedAnswer.value.isCorrect ? 'correct' : 'incorrect' });
-    setTimeout(() => {
-      showExplanation.value = true;
-      store.commit('INCREMENT_SCORE', selectedAnswer.value.isCorrect);  // Mettre à jour le score ici
-      store.dispatch('updateProgress', { isCorrect: selectedAnswer.value.isCorrect });
-      store.commit('SET_SHOW_TRANSITION', { show: false, type: '' });
-      selectedAnswer.value = null;
-    }, 2000); // Correspond à la durée de l'animation
-  }
+  submitAnswer(selectedAnswer.value);
+  selectedAnswer.value = null;
 }
-
 
 function submitAnswer(answer) {
   console.log("Submitting answer:", answer);

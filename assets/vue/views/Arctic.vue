@@ -45,12 +45,6 @@
 </template>
 
 
-
-
-
-
-
-
 <script setup>
 import {computed, onMounted, ref, watch, nextTick, watchEffect} from 'vue';
 import { useStore } from 'vuex';
@@ -119,11 +113,13 @@ function loadAnimation(animationUrl, containerRef, loop = true) {
 }
 
 watch(showExplanation, (newVal, oldVal) => {
+  console.log(`Explanation Changed: ${oldVal} to ${newVal}`);
   if (!newVal && oldVal && !loading.value) {
     console.log("Reverting to main quiz animation after explanation...");
     loadAnimation('https://lottie.host/0df1ac36-4e0a-48d7-87a8-3c4c1b5619fa/mtob88tlVY.json', lottieContainerRef, true);
   }
 });
+
 
 function toggleAnswer(answer) {
   console.log("Toggling answer:", answer);
