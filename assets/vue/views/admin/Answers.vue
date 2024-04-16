@@ -138,64 +138,66 @@ export default {
 
 
 
-<style scoped>
+<style lang="scss" scoped>
 .answers-management {
   margin: 20px;
-}
 
-.form-group {
-  margin-bottom: 20px;
-}
+  .form-group {
+    margin-bottom: 20px;
+  }
 
-.input-field, .select-field {
-  padding: 8px;
-  margin: 5px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
+  .input-field, .select-field {
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
 
-.action-button, .edit-button, .delete-button {
-  background-color: #dc3545;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-left: 5px;
-}
+  .action-button, .edit-button, .delete-button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 5px;
 
-.delete-button {
-  background-color: #f44336;
-}
+    &:hover {
+      opacity: 0.9;
+    }
+  }
 
-.edit-button {
-  background-color: #F44336;
-}
+  .delete-button {
+    background-color: #f44336;
+  }
 
-.action-button:hover, .edit-button:hover, .delete-button:hover {
-  opacity: 0.9;
+  .edit-button {
+    background-color: #F44336;
+  }
 }
 
 ul {
   list-style-type: none;
   padding: 0;
-}
 
-.answer-item {
-  margin-bottom: 10px;
-  background-color: #f9f9f9;
-  padding: 15px;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  .answer-item {
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
 
 .fade-enter-active, .fade-leave-active {
   transition: opacity 0.5s;
 }
+
 .fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
   opacity: 0;
 }
+
 
 </style>

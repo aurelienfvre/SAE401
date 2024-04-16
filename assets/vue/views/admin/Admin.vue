@@ -46,51 +46,53 @@ export default {
   align-items: center;
   margin: 20px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  h1 {
+    color: #333;
+    margin-bottom: 30px;
+  }
+
+  .nav {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+
+    .nav-link {
+      display: block;
+      padding: 10px 15px;
+      background-color: #f8f9fa;
+      color: #495057;
+      text-decoration: none;
+      border-bottom: 1px solid #dee2e6;
+      transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:hover,
+      &.router-link-exact-active {
+        background-color: #e9ecef;
+        color: #007bff;
+      }
+    }
+  }
+
+  .logout-button {
+    padding: 10px 15px;
+    margin-top: 20px;
+    background-color: #dc3545; // Rouge
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: #c82333; // Rouge foncé
+    }
+  }
 }
 
-h1 {
-  color: #333;
-  margin-bottom: 30px;
-}
-
-.nav {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.nav-link {
-  display: block;
-  padding: 10px 15px;
-  background-color: #f8f9fa;
-  color: #495057;
-  text-decoration: none;
-  border-bottom: 1px solid #dee2e6;
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-}
-
-.nav-link:last-child {
-  border-bottom: none;
-}
-
-.nav-link:hover, .nav-link.router-link-exact-active {
-  background-color: #e9ecef;
-  color: #007bff;
-}
-
-.logout-button {
-  padding: 10px 15px;
-  margin-top: 20px;
-  background-color: #dc3545; /* Rouge */
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.logout-button:hover {
-  background-color: #c82333; /* Rouge foncé */
-}
 </style>
 

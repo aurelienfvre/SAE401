@@ -128,93 +128,94 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .question-management {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-}
 
-.question-management h2 {
-  margin-bottom: 20px;
-}
+  h2 {
+    margin-bottom: 20px;
+  }
 
-.question-management div {
-  margin-bottom: 20px;
-}
+  div {
+    margin-bottom: 20px;
+  }
 
-.question-management input, .question-management select {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
-}
+  input, select {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
 
-.question-management button {
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 15px;
-  margin-right: 10px;
-  font-weight: bold;
-  text-transform: uppercase;
-}
+  button {
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin-right: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
 
-.question-management button:hover {
-  opacity: 0.9;
+    &:hover {
+      opacity: 0.9;
+    }
+  }
 }
 
 ul {
   list-style-type: none;
   padding: 0;
-}
 
-li {
-  background-color: #f9f9f9;
-  padding: 20px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  li {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 button {
   background-color: #dc3545;
   color: white;
   padding: 5px 10px;
-}
 
-button:hover {
-  background-color: #c82333;
+  &:hover {
+    background-color: #c82333;
+  }
 }
 
 .edit-button {
   background-color: #ffc107;
-}
 
-.edit-button:hover {
-  background-color: #e0a800;
+  &:hover {
+    background-color: #e0a800;
+  }
 }
 
 .delete-button {
   background-color: #dc3545;
-}
 
-.delete-button:hover {
-  background-color: #c82333;
+  &:hover {
+    background-color: #c82333;
+  }
 }
 
 .add-button {
   background-color: #28a745;
   color: white;
   margin-bottom: 20px;
+
+  &:hover {
+    background-color: #218838;
+  }
 }
 
-.add-button:hover {
-  background-color: #218838;
-}
 </style>

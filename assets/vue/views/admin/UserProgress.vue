@@ -88,53 +88,54 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .user-progress-management {
   margin: 20px;
+
+  h2 {
+    margin-bottom: 20px;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  input[type="number"] {
+    margin: 0 5px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 5px;
+
+    &:hover {
+      background-color: #c82333;
+    }
+  }
+
+  div > button {
+    margin-top: 10px;
+  }
 }
 
-h2 {
-  margin-bottom: 20px;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  margin-bottom: 10px;
-  background-color: #f9f9f9;
-  padding: 20px;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-input[type="number"] {
-  margin: 0 5px;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-button {
-  background-color: #dc3545;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-left: 5px;
-}
-
-button:hover {
-  background-color: #c82333;
-}
-
-div > button {
-  margin-top: 10px;
-}
 
 </style>

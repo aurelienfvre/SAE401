@@ -119,45 +119,52 @@ const deleteUser = async (userId) => {
 </script>
 
 
-<style scoped>
+<style lang="scss" scoped>
 h1 {
   margin-bottom: 20px;
 }
+
 ul {
   list-style-type: none;
   padding: 0;
+
+  li {
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+
+    .profile-img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 15px;
+      object-fit: cover;
+    }
+
+    button {
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 5px;
+
+      &:hover {
+        background-color: #c82333;
+      }
+    }
+  }
 }
-li {
-  margin-bottom: 10px;
-  background-color: #f9f9f9;
-  padding: 30px;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-}
-.profile-img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  margin-right: 15px;
-  object-fit: cover;
-}
-button {
-  background-color: #dc3545;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin: 5px;
-}
-button:hover {
-  background-color: #c82333;
-}
+
 input {
   margin: 5px 0;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+
 </style>

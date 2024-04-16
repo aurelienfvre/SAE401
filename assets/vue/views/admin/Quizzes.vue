@@ -82,67 +82,70 @@ export default {
 };
 </script>
 
-<style scoped>
-.quiz-management h2 {
-  margin-bottom: 20px;
-  text-align: center;
+<style lang="scss" scoped>
+.quiz-management {
+  h2 {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  div {
+    margin-bottom: 20px;
+  }
+
+  input {
+    margin: 5px 0;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  button {
+    background-color: #dc3545; // Définition de la couleur initiale pour le bouton
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+    font-size: 16px;
+
+    &:hover {
+      background-color: #c82333; // Couleur lors du survol
+    }
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .edit-btn, .delete-btn {
+    background-color: #dc3545; // Utilisation d'une couleur cohérente pour les boutons d'action
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+
+    &:hover {
+      background-color: #c82333; // Couleur lors du survol pour les boutons d'action
+    }
+  }
 }
 
-.quiz-management div {
-  margin-bottom: 20px;
-}
-
-.quiz-management input {
-  margin: 5px 0;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  display: block;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.quiz-management button {
-  background-color: #dc3545; /* Vert */
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin: 5px;
-  font-size: 16px;
-}
-
-.quiz-management button:hover {
-  background-color: #c82333; /* Vert foncé */
-}
-
-.quiz-management ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.quiz-management li {
-  margin-bottom: 10px;
-  background-color: #f9f9f9;
-  padding: 20px;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.quiz-management .edit-btn, .quiz-management .delete-btn {
-  background-color: #dc3545; /* Rouge */
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-left: 10px;
-}
-
-.quiz-management .edit-btn:hover, .quiz-management .delete-btn:hover {
-  background-color: #c82333; /* Rouge foncé */
-}
 </style>
