@@ -147,7 +147,7 @@ export default createStore({
                 })
                 .catch(error => console.error('Error fetching user progress:', error));
         },
-        updateProgress({ commit }, { isCorrect }) {
+        updateProgress({ commit }) {
             commit('NEXT_QUESTION');
             commit('UPDATE_PROGRESS');
         },

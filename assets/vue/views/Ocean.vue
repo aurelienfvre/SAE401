@@ -136,9 +136,18 @@ function toggleAnswer(answer) {
 
 function validateAnswer() {
   console.log("Validating answer:", selectedAnswer.value);
-  submitAnswer(selectedAnswer.value);
-  selectedAnswer.value = null;
+  if (selectedAnswer.value) {
+    store.commit('SET_SHOW_TRANSITION', { show: true, type: selectedAnswer.value.isCorrect ? 'correct' : 'incorrect' });
+    setTimeout(() => {
+      showExplanation.value = true;
+      store.commit('INCREMENT_SCORE', selectedAnswer.value.isCorrect);  // Mettre à jour le score ici
+      store.dispatch('updateProgress', { isCorrect: selectedAnswer.value.isCorrect });
+      store.commit('SET_SHOW_TRANSITION', { show: false, type: '' });
+      selectedAnswer.value = null;
+    }, 2000); // Correspond à la durée de l'animation
+  }
 }
+
 
 function submitAnswer(answer) {
   console.log("Submitting answer:", answer);
