@@ -288,7 +288,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .scene {
   width: 50vw;
   height: 30vh;

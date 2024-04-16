@@ -15,7 +15,7 @@ const props = defineProps({
 });
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .icon {
   background: white;
   padding: 0.5rem;
@@ -29,24 +29,25 @@ const props = defineProps({
   transition: ease-in-out 0.4s;
   overflow: hidden;
   gap: 18px;
-  white-space: nowrap; /* Ajouté pour empêcher le texte de passer à la ligne */
+  white-space: nowrap; // Empêche le texte de passer à la ligne
   text-decoration: none;
   font-weight: bold;
+
+  img {
+    width: 2rem;
+    height: 2rem;
+    transition: cubic-bezier(0.25, 0.24, 0.63, 1.53) 0.25s;
+  }
+
+  &:hover {
+    gap: 4px;
+    width: 12rem;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+
+    img {
+      transform: rotate(45deg);
+    }
+  }
 }
 
-.icon:hover {
-  gap: 4px;
-  width: 12rem;
-  padding: 0.5rem 0.5rem 0.5rem 1rem;
-}
-
-.icon:hover img {
-  transform: rotate(45deg);
-}
-
-.icon img {
-  width: 2rem;
-  height: 2rem;
-  transition: cubic-bezier(0.25, 0.24, 0.63, 1.53) 0.25s;
-}
 </style>

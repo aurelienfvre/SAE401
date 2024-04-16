@@ -25,7 +25,7 @@ const props = defineProps({
 });
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .card-container {
   background-color: #ffffff;
   max-width: 1546px; /* Largeur maximale pour les grands écrans */

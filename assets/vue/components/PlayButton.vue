@@ -28,7 +28,7 @@ const { t } = useI18n();
 </script>
 
 
-<style scoped>
+<style lang="scss" scoped>
 .buttons-wrapper {
   display: flex;
   flex-direction: column;
@@ -38,36 +38,36 @@ const { t } = useI18n();
   position: relative;
   bottom: 3rem;
   left: 2rem;
+
+  &:hover .action-button {
+    transform: rotate(0deg);
+  }
+
+  .action-button {
+    border: 1px solid #333;
+    color: #333;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+    font-size: 1.5rem;
+    border-radius: 50px;
+  }
+
+  .play-button {
+    transform: rotate(-5deg);
+    padding: 5px 50px;
+  }
+
+  .svg-button {
+    transform: rotate(5deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 40px;
+
+    svg path {
+      fill: #333;
+    }
+  }
 }
 
-.buttons-wrapper:hover .action-button {
-  transform: rotate(0deg);
-}
-
-.action-button {
-
-  border: 1px solid #333;
-  color: #333;
-  text-decoration: none;
-  transition: transform 0.3s ease;
-  font-size: 1.5rem;
-  border-radius: 50px;
-}
-
-.play-button {
-  transform: rotate(-5deg);
-  padding: 5px 50px;
-}
-
-.svg-button {
-  transform: rotate(5deg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 40px;
-}
-
-.svg-button svg path {
-  fill: #333;
-}
 </style>

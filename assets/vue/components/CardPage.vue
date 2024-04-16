@@ -86,18 +86,10 @@ const cardStyle = computed(() => ({
 }));
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .dual-inner-containers {
   display: flex;
   justify-content: space-between;
 }
 
-.inner-container.left {
-  /* Style spécifique au conteneur gauche si nécessaire */
-
-}
-
-.inner-container.right {
-  /* Style spécifique au conteneur droit si nécessaire */
-}
 </style>

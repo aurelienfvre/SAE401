@@ -52,7 +52,7 @@ const arrowSvg = ref(`
 </script>
 
 
-<style scoped>
+<style lang="scss" scoped>
 .home-second-grid {
   display: grid;
   gap: 20px;
@@ -60,76 +60,64 @@ const arrowSvg = ref(`
   z-index: 10;
   grid-auto-columns: repeat(2, 1fr);
 }
-.text-and-title {
-  width: 100%; /* La largeur correspond à celle de l'image principale en dessous */
-  margin-bottom: 0; /* Pour éviter tout espacement supplémentaire entre les éléments */
-}
 
-.text-and-title h2 {
-  margin: 0; /* Aucun espacement entre le titre et le router-link */
-  padding: 0; /* Ajustez selon vos besoins */
-  font-size: 20px;
+.text-and-title {
+  width: 100%;
+  margin-bottom: 0;
+
+  h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+  }
 }
 
 .details-text {
-  /* Styles pour le router-link 'Voir plus de détails' */
-  text-decoration: none; /* Supprime le soulignement par défaut */
-  display: inline-block; /* Pour permettre l'alignement et le positionnement */
+  text-decoration: none;
+  display: inline-block;
   color: #b1b1b1;
 }
 
-.main-image-container {
-  width: 77%; /* Largeur correspondant au design spécifié */
-  border-radius: 8px; /* Arrondissement des coins */
-}
+.main-image-container, .sub-containers {
+  width: 15vw;
 
-.main-image {
-  width: 100%; /* Utiliser la largeur totale du conteneur */
-  border-radius: 8px; /* Arrondissement des coins */
+  border-radius: 8px;
+
+  .main-image, .color-container {
+    width: 100%;
+    border-radius: 8px;
+  }
 }
 
 .sub-containers {
   display: flex;
-  width: 77%; /* Largeur correspondant au design spécifié */
   margin-top: -5px;
+
+  .color-container {
+    &.orange, &.green {
+      height: 5rem;
+      position: relative;
+    }
+
+    &.orange {
+      flex: 0 0 70%;
+      background-color: #fdae84;
+    }
+
+    &.green {
+      flex: 0 0 30%;
+      background-color: #c1dd13;
+    }
+
+    .centered-image {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 80%;
+      max-height: 80%;
+    }
+  }
 }
 
-.color-container {
-  border-radius: 8px;
-}
-
-.orange {
-  flex: 0 0 70%; /* Utilise 'flex-basis' pour la largeur sans 'flex-grow' ou 'flex-shrink' */
-  background-color: #fdae84;
-  height: 5rem; /* Hauteur fixe pour le conteneur orange */
-  position: relative;
-}
-
-.green {
-  flex: 0 0 30%; /* Utilise 'flex-basis' pour la largeur sans 'flex-grow' ou 'flex-shrink' */
-  background-color: #c1dd13;
-  height: 5rem; /* Hauteur fixe pour le conteneur vert */
-  position: relative; /* Pour positionner l'image secondaire */
-}
-
-.centered-image {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 80%; /* Ajustez selon les dimensions de l'image */
-  max-height: 80%; /* Ajustez selon les dimensions de l'image */
-}
-.main-image-container,
-.sub-containers {
-  width: 15vw; /* Ajustez selon vos besoins, en utilisant vw pour un ratio basé sur la largeur de la vue */
-}
-
-/* Ajuster la hauteur des conteneurs de couleur pour maintenir le ratio */
-
-/* Si vous souhaitez ajuster la taille des images pour maintenir un ratio constant */
-.centered-image {
-  max-width: 80%; /* Continuez d'utiliser un pourcentage de la largeur du conteneur */
-  max-height: auto; /* Cela ajustera automatiquement la hauteur pour maintenir le ratio */
-}
 </style>

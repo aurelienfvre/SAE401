@@ -45,64 +45,65 @@ const arrowSvg = ref(`
 </script>
 
 
-<style scoped>
+<style lang="scss" scoped>
 .home-first-grid {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
 }
+
 .content-container {
   display: flex;
-  flex-direction: column; /* Les enfants s'organisent verticalement */
-  /* align-items: flex-start; */
+  flex-direction: column; // Les enfants s'organisent verticalement
   margin-left: 8.4375rem;
 }
 
 .text-and-images-container {
   display: flex;
-  flex-wrap: wrap; /* Permet aux enfants de passer à la ligne suivante si nécessaire */
-  width: 77%; /* La largeur peut être ajustée selon le design global */
-  align-items: flex-end; /* Alignement vertical en haut pour tous les enfants */
+  flex-wrap: wrap; // Permet aux enfants de passer à la ligne suivante si nécessaire
+  width: 77%; // La largeur peut être ajustée selon le design global
+  align-items: flex-end; // Alignement vertical en haut pour tous les enfants
+
+  .text-container {
+    background-color: #abcdff;
+    padding: 16px;
+    border-radius: 8px;
+    width: 33%; // La largeur reste à 33%
+
+    .text-title {
+      margin: 0;
+      text-align: center;
+    }
+  }
+
+  .additional-text-container {
+    width: 35%; // Correspond à la largeur d'une image
+    display: flex;
+    flex-direction: column;
+    justify-content: center; // Centre verticalement le contenu
+    padding: 5px;
+
+    .details-text {
+      display: flex;
+      align-items: center;
+      color: #b1b1b1;
+      margin-top: 5px;
+      text-decoration: none;
+
+      .arrow-icon {
+        margin-left: 4px;
+      }
+    }
+  }
+
+  .images-container {
+    display: flex;
+
+    .bordered-image {
+      width: calc(35% - 8px);
+      border-radius: 8px;
+      object-fit: cover;
+    }
+  }
 }
 
-.text-container {
-  background-color: #abcdff;
-  padding: 16px;
-  border-radius: 8px;
-  width: 33%; /* La largeur reste à 35% */
-}
-
-.text-title {
-  margin: 0;
-  text-align: center;
-}
-
-.additional-text-container {
-  width: 35%; /* Correspond à la largeur d'une image */
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Centre verticalement le contenu */
-  padding: 5px;
-}
-
-.details-text {
-  display: flex;
-  align-items: center;
-  color: #b1b1b1;
-  margin-top: 5px;
-  text-decoration: none;
-}
-
-.arrow-icon {
-  margin-left: 4px;
-}
-
-.images-container {
-  display: flex;
-}
-
-.bordered-image {
-  width: calc(35% - 8px);
-  border-radius: 8px;
-  object-fit: cover;
-}
 </style>
