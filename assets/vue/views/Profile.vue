@@ -217,7 +217,7 @@ const logout = () => {
 
 
 
-<style scoped>
+<style lang="scss" scoped>
 .profile-page {
   max-width: 800px;
   border-radius: 8px;
@@ -227,55 +227,45 @@ const logout = () => {
   margin: auto;
 }
 
-.form-buttons-inline {
-  display: flex;
-  gap: 10rem; /* Espace entre les boutons */
-}
-
 .edit-form {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
+
+  .form-group {
+    width: 100%;
+    margin-bottom: 5px;
+
+    label {
+      margin-bottom: 5px;
+      color: #666;
+      font-size: 16px;
+    }
+  }
 }
 
-.form-group {
-  width: 100%;
-  margin-bottom: 5px;
-}
-
-.form-group label {
-  margin-bottom: 5px;
-  color: #666;
-  font-size: 16px;
-}
-
+.profile-picture,
 .profile-picture-small {
-  width: 80px;
-  height: 80px; /* Taille réduite en mode édition */
-  transition: width 0.3s ease, height 0.3s ease;
   border-radius: 50%;
   object-fit: cover;
+
+  &.profile-picture-small {
+    width: 80px;
+    height: 80px;
+    transition: width 0.3s ease, height 0.3s ease;
+  }
+
+  &.profile-picture {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+  }
 }
 
-
-
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
-  color: #000;
-  font-size: 16px;
-  font-weight: 700;
-}
-
-
-
-.profile-picture {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 20px;
+.form-buttons-inline {
+  display: flex;
+  gap: 10rem; // Espace entre les boutons
 }
 
 .form-button {
@@ -283,84 +273,79 @@ const logout = () => {
   width: 100%;
   display: flex;
   justify-content: center;
-}
 
-.form-button button {
-  --color: #333; /* Couleur de base du bouton */
-  padding: 8px 40px;
-  border-radius: 30px;
-  border: 1px solid var(--color);
-  background-color: #fff;
-  cursor: pointer;
-  position: relative; /* Nécessaire pour les pseudo-éléments de survol */
-  overflow: hidden; /* Empêche le débordement du pseudo-élément */
-  color: var(--color); /* Couleur du texte du bouton */
-  transition: color 0.5s; /* Transition pour la couleur du texte */
-  z-index: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 500;
-}
+  button {
+    --color: #333; // Couleur de base du bouton
+    padding: 8px 40px;
+    border-radius: 30px;
+    border: 1px solid var(--color);
+    background-color: #fff;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    color: var(--color);
+    transition: color 0.5s;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
 
-.form-button button::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  background: var(--color);
-  height: 162px;
-  width: 217px;
-  border-radius: 50%;
-  top: 100%;
-  left: -100%; /* Démarre de la gauche pour l'animation */
-  transition: all 0.7s;
-}
+    &::before, &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.7s;
+    }
 
-.form-button button:hover {
-  color: #fff;
-}
+    &::before {
+      z-index: -1;
+      background: var(--color);
+      height: 162px;
+      width: 217px;
+      border-radius: 50%;
+      top: 100%;
+      left: -100%;
+    }
 
-.form-button button:hover::before {
-  top: -30px;
-  left: -30px; /* Anime le background vers le centre */
-}
+    &:hover {
+      color: #fff;
 
-.form-button button:active::before {
-  background: #333; /* Couleur de background lors du clic */
-  transition: background 0s;
-}
+      &::before {
+        top: -30px;
+        left: -30px;
+      }
 
-.form-button button span {
-  display: inline-block;
-  transition: transform 0.25s, opacity 0.25s;
-}
+      &::after {
+        opacity: 1;
+        transform: translateY(0);
+        color: #fff;
+      }
 
-.form-button button::after {
-  content: attr(data-content);
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  transition: opacity 0.25s, transform 0.25s;
-  transform: translateY(100%);
-  color: #333; /* Assurez-vous que cette couleur est visible sur votre fond */
-  background-color: transparent; /* Transparent pour voir l'animation du background */
-}
+      span {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+    }
 
-.form-button button:hover::after {
-  opacity: 1;
-  transform: translateY(0);
-  color: #fff;
-}
+    &:active::before {
+      background: #333;
+      transition: background 0s;
+    }
 
-.form-button button:hover > span {
-  transform: translateY(-100%);
-  opacity: 0;
+    &::after {
+      opacity: 0;
+      transform: translateY(100%);
+      color: #333;
+      background-color: transparent;
+    }
+  }
 }
 
 .additional-content {
@@ -368,6 +353,7 @@ const logout = () => {
   background: #e9ecef;
   border-radius: 8px;
 }
+
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -376,8 +362,8 @@ textarea {
   padding: 8px;
   border: 1px solid #333;
   border-radius: 10px;
-  box-shadow: none;
   background-color: transparent;
   color: #000;
 }
+
 </style>

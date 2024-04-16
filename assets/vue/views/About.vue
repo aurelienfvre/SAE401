@@ -58,7 +58,7 @@ import aboutImage from "@/assets/about-image.jpg";
 const { t } = useI18n();
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .title {
   text-align: center;
   padding: 0 0 40px 0;
@@ -70,6 +70,7 @@ const { t } = useI18n();
   margin-top: 20px;
   margin-bottom: 10px;
 }
+
 .values-container {
   display: flex;
   justify-content: space-around;
@@ -79,32 +80,35 @@ const { t } = useI18n();
   margin: 2rem auto;
   padding: 1rem;
   border-radius: 10px;
+
+  .value-section {
+    width: 30%; // Ajustez en fonction de la largeur de votre contenu
+    text-align: center;
+
+    .value-title {
+      font-weight: bold;
+      padding: 0.7rem;
+    }
+  }
+
+  .vertical-hr {
+    width: 1px;
+    background-color: #000;
+    margin: 0 20px; // Ajustez l'espacement selon vos besoins
+    flex-grow: 1; // Permet à la ligne de s'étendre verticalement pour occuper tout l'espace disponible
+    height: 14rem;
+  }
 }
 
-.value-section {
-  width: 30%; /* Ajustez en fonction de la largeur de votre contenu */
-  text-align: center;
-}
-
-.value-title {
-  font-weight: bold;
-  padding: 0.7rem;
-}
-
-.vertical-hr {
-  width: 1px;
-  background-color: #000;
-  margin: 0 20px; /* Ajustez l'espacement selon vos besoins */
-  flex-grow: 1; /* Permet à la ligne de s'étendre verticalement pour occuper tout l'espace disponible */
-  height: 14rem;
-}
 .image {
   display: flex;
   justify-content: center;
   margin: 2rem auto;
+
+  img {
+    border-radius: 10px;
+    width: 70%;
+  }
 }
-.image img {
-  border-radius: 10px;
-  width: 70%;
-}
+
 </style>

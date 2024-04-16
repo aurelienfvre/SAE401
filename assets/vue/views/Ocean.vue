@@ -44,13 +44,6 @@
   <Footer />
 </template>
 
-
-
-
-
-
-
-
 <script setup>
 import {computed, onMounted, ref, watch, nextTick, watchEffect} from 'vue';
 import { useStore } from 'vuex';
@@ -187,21 +180,22 @@ function restartQuiz() {
 
 
 
-<style scoped>
+<style lang="scss" scoped>
 .quiz-wrap {
   display: flex;
   justify-content: center;
   padding: 40px;
-
 }
+
 .quiz-container {
-  width: 100%; /* Full width of the quiz-content */
-  font-size: 0.8em; /* Reduce text size of all texts in the quiz */
+  width: 100%; // Full width of the quiz-content
+  font-size: 0.8em; // Reduce text size of all texts in the quiz
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
+
 .flex-container {
   display: flex;
   justify-content: flex-start;
@@ -209,13 +203,12 @@ function restartQuiz() {
 
 .lottie-animation {
   width: 40%;
-  height: 100vh; /* Définir une hauteur pour être sûr qu'elle n'est pas nulle */
+  height: 100vh; // Définir une hauteur pour être sûr qu'elle n'est pas nulle
   min-width: 200px;
-
 }
 
 .quiz-content {
-  width: 70%; /* Adjust based on your layout needs */
+  width: 70%; // Adjust based on your layout needs
   display: flex;
   flex-direction: column;
 }
@@ -225,6 +218,7 @@ function restartQuiz() {
   gap: 20px;
   margin: 20px 0;
 }
+
 .progress-bar {
   position: relative;
   width: 50rem;
@@ -232,20 +226,23 @@ function restartQuiz() {
   height: 35px;
   border-radius: 50px;
   overflow: hidden;
+
+  &-fill {
+    background-color: #C1DD13;
+    height: 100%;
+    width: 0;
+    transition: width 0.5s ease-in-out;
+  }
+
+  span {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: black;
+  }
 }
-.progress-bar-fill {
-  background-color: #C1DD13;
-  height: 100%;
-  width: 0;
-  transition: width 0.5s ease-in-out;
-}
-.progress-bar span {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: black;
-}
+
 .transition-sphere {
   position: fixed;
   top: 50%;
@@ -254,15 +251,18 @@ function restartQuiz() {
   border-radius: 50%;
   z-index: 10;
   background-color: transparent;
+
+  &.expand-correct {
+    background-color: #C1DD13;
+    animation: expandAndShrink 2s ease-out forwards;
+  }
+
+  &.expand-incorrect {
+    background-color: #fb2e2e;
+    animation: expandAndShrink 2s ease-out forwards;
+  }
 }
-.expand-correct {
-  background-color: #C1DD13;
-  animation: expandAndShrink 2s ease-out forwards;
-}
-.expand-incorrect {
-  background-color: #fb2e2e;
-  animation: expandAndShrink 2s ease-out forwards;
-}
+
 @keyframes expandAndShrink {
   0%, 100% {
     width: 0;
@@ -275,11 +275,13 @@ function restartQuiz() {
     opacity: 1;
   }
 }
+
 .loading {
   text-align: center;
   padding: 20px;
   font-size: 1.5em;
 }
+
 .card-quiz {
   padding: 20px;
   border: 1px solid #333;
@@ -291,33 +293,39 @@ function restartQuiz() {
   justify-content: center;
   align-items: center;
   text-align: center;
+  font-size: 1rem;
+
+  &.active, &:hover {
+    background-color: #d5d5d5;
+    transform: scale(1.05);
+  }
 }
-.card-quiz.active, .card-quiz:hover {
-  background-color: #d5d5d5;
-  transform: scale(1.05);
-}
+
 .validate-button {
-  padding: 15px 40px; /* Increased padding for larger button */
+  padding: 15px 40px; // Increased padding for larger button
   border: none;
   border-radius: 50px;
   background-color: #333;
   color: white;
   cursor: pointer;
-  font-size: 1.1em; /* Slightly larger text */
-  transition: background-color 0.2s, transform 0.2s; /* Transition for smooth hover effect */
+  font-size: 1.1em; // Slightly larger text
+  transition: background-color 0.2s, transform 0.2s; // Transition for smooth hover effect
+
+  &:hover {
+    background-color: #555; // Darker shade on hover
+    transform: scale(1.1); // Slight increase in scale on hover
+  }
 }
-.validate-button:hover {
-  background-color: #555; /* Darker shade on hover */
-  transform: scale(1.1); /* Slight increase in scale on hover */
-}
+
 .explanation-content {
-  width: 60%; /* Specific width for explanation content */
-  text-align: left; /* Align text to the right */
-  padding: 10px; /* Padding for better spacing */
-  font-style: italic; /* Italic style for emphasis */
-  color: #444; /* Dark grey color for readability */
-  font-size: 1.1em; /* Larger text size */
+  width: 60%; // Specific width for explanation content
+  text-align: left; // Align text to the right
+  padding: 10px; // Padding for better spacing
+  font-style: italic; // Italic style for emphasis
+  color: #444; // Dark grey color for readability
+  font-size: 1.1em; // Larger text size
 }
+
 .question {
   font-weight: bold;
   font-size: 1.2em;
@@ -327,22 +335,17 @@ function restartQuiz() {
   margin-top: 10px;
   padding: 10px 40px;
   border-radius: 20px;
-  background-color: #fff; /* Blue color for primary actions */
+  background-color: #fff; // Blue color for primary actions
   color: black;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
   border: 1px solid #333;
+
+
+  &:hover {
+    background-color: #333;
+    color: white; // Darker shade on hover
+  }
 }
 
-.quiz-button:hover {
-  background-color: #333;
-  color: white;/* Darker shade on hover */
-}
-.answers-grid, .explanation-content, .card-quiz {
-  padding: 13px; /* Réduction du padding */
-}
-
-.card-quiz {
-  font-size: 1rem; /* Réduire spécifiquement la taille du texte des cartes */
-}
 </style>

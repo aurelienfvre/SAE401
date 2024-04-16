@@ -114,7 +114,7 @@ const handleAnchorClick = (event) => {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
 
 .title-edu {
@@ -130,100 +130,102 @@ const handleAnchorClick = (event) => {
   line-height: 1.5;
   font-weight: 300;
 }
+
 .page-container {
   display: flex;
   justify-content: flex-end;
   margin-top: 40px;
-}
-.page-container.sticky {
-  position: sticky;
-  top: 0; /* Ajustez cette valeur selon les besoins */
-  z-index: 1000; /* Assurez-vous qu'il reste au-dessus d'autres éléments */
-  background-color: white; /* Ou une autre couleur qui correspond à votre design */
-  padding: 10px 300px; /* Ajoute un peu d'espace autour des boutons */
+
+  &.sticky {
+    position: sticky;
+    top: 0; // Ajustez cette valeur selon les besoins
+    z-index: 1000; // Assurez-vous qu'il reste au-dessus d'autres éléments
+    background-color: white; // Ou une autre couleur qui correspond à votre design
+    padding: 10px 300px; // Ajoute un peu d'espace autour des boutons
+  }
 }
 
 .filter-buttons {
   display: flex;
-  gap: 10px; /* Espacement entre les boutons */
-}
+  gap: 10px; // Espacement entre les boutons
 
-.filter-buttons .button {
-  --color: #333; /* Couleur de base du bouton */
-  padding: 10px 50px;
-  border-radius: 20px;
-  border: 1px solid var(--color);
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition: color 0.5s, background-color 0.5s; /* Ajouté pour l'animation de fond */
-  font-weight: 500;
-  color: var(--color);
-  z-index: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  margin: 0 5px; /* Espacement entre les boutons, ajustez selon vos besoins */
-}
+  .button {
+    --color: #333; // Couleur de base du bouton
+    padding: 10px 50px;
+    border-radius: 20px;
+    border: 1px solid var(--color);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.5s, background-color 0.5s; // Ajouté pour l'animation de fond
+    font-weight: 500;
+    color: var(--color);
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    margin: 0 5px; // Espacement entre les boutons, ajustez selon vos besoins
 
-.filter-buttons .button::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  background: var(--color);
-  height: 145px;
-  width: 225px;
-  border-radius: 50%;
-  top: 100%;
-  left: -100%;
-  transition: all 0.7s;
-}
+    &::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      background: var(--color);
+      height: 145px;
+      width: 225px;
+      border-radius: 50%;
+      top: 100%;
+      left: -100%;
+      transition: all 0.7s;
+    }
 
-.filter-buttons .button::after {
-  content: attr(data-content);
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  transition: opacity 0.25s, transform 0.25s;
-  transform: translateY(100%);
-  color: #fff; /* Couleur du texte au survol */
-}
+    &::after {
+      content: attr(data-content);
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.25s, transform 0.25s;
+      transform: translateY(100%);
+      color: #fff; // Couleur du texte au survol
+    }
 
-.filter-buttons .button:hover {
-  color: #fff; /* Changement pour assurer la visibilité du texte */
-}
+    &:hover {
+      color: #fff; // Changement pour assurer la visibilité du texte
 
-.filter-buttons .button:hover::before {
-  top: -30px;
-  left: -10px;
-}
+      &::before {
+        top: -30px;
+        left: -10px;
+      }
 
-.filter-buttons .button:hover::after {
-  opacity: 1;
-  transform: translateY(0);
-}
+      &::after {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-.filter-buttons .button:active::before {
-  background: #333; /* Couleur de background lors du clic */
-  transition: background 0s;
-}
+    &:active::before {
+      background: #333; // Couleur de background lors du clic
+      transition: background 0s;
+    }
 
-.filter-buttons .button span {
-  transition: transform 0.25s, opacity 0.25s;
-  opacity: 1;
-  display: block; /* Assure que le span est traité comme un bloc pour la transformation */
-}
+    span {
+      transition: transform 0.25s, opacity 0.25s;
+      opacity: 1;
+      display: block; // Assure que le span est traité comme un bloc pour la transformation
+    }
 
-.filter-buttons .button:hover span {
-  transform: translateY(-100%);
-  opacity: 0;
+    &:hover span {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+  }
 }
 
 </style>

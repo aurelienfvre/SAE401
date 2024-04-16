@@ -156,6 +156,10 @@ export default createStore({
                 })
                 .catch(error => console.error('Error fetching user progress:', error));
         },
+        finishQuiz({ commit, state }, answer) {
+            commit('INCREMENT_SCORE', { isCorrect: answer && answer.isCorrect });
+            commit('FINISH_QUIZ');
+        },
         updateProgress({ state, commit }, { isCorrect }) {
             if (state.userProgress && state.userProgress.id) {
                 axios.put(`/user_progresses/${state.userProgress.id}`, {
@@ -181,9 +185,7 @@ export default createStore({
 
 
 
-        finishQuiz({ commit, state }, answer) {
-            commit('FINISH_QUIZ', { isCorrect: answer && answer.isCorrect });
-        },
+
         resetQuiz({ commit, dispatch }) {
             commit('RESET_QUIZ');
             dispatch('fetchQuizData', state.currentQuiz.id);

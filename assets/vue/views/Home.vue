@@ -100,7 +100,20 @@ import imageArctic from "@/assets/image-artic.webp";
 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+$color-ocean: #3a7ca3;
+$color-jungle: #25a37e;
+$color-forest: #bdd526;
+$color-desert: #fdae84;
+$color-arctic: #abcdff;
+
+$card-colors: (
+    "ocean": #3574d5,
+    "jungle": #25a37e,
+    "desert": #fdae84,
+    "arctic": #d1e2fd
+);
+
 .home-content {
   display: flex;
   align-items: center;
@@ -141,29 +154,19 @@ import imageArctic from "@/assets/image-artic.webp";
   justify-content: space-between;
   align-items: start;
   margin: 0;
+
+  p {
+    width: 32%;
+    font-size: 1.5rem;
+    margin: 0 8.3rem;
+  }
 }
 
-.educational-sections-wrapper p {
-  width: 32%;
-  font-size: 1.5rem;
-  margin: 0 8.3rem;
-}
-
-.color-ocean {
-  color: #3a7ca3;
-}
-.color-jungle {
-  color: #25a37e;
-}
-.color-forest {
-  color: #bdd526;
-}
-.color-desert {
-  color: #fdae84;
-}
-.color-arctic {
-  color: #abcdff;
-}
+.color-ocean { color: $color-ocean; }
+.color-jungle { color: $color-jungle; }
+.color-forest { color: $color-forest; }
+.color-desert { color: $color-desert; }
+.color-arctic { color: $color-arctic; }
 
 .play-button-wrapper {
   display: grid;
@@ -172,26 +175,17 @@ import imageArctic from "@/assets/image-artic.webp";
 
 .cards-container {
   display: flex;
-  flex-wrap: wrap; /* Permet aux cartes de passer à la ligne suivante si l'espace horizontal est insuffisant */
-  gap: 2rem; /* Espacement entre les cartes */
-  margin: 3rem auto; /* Marge supérieure et centrage horizontal */
-  justify-content: center; /* Centre les cartes horizontalement */
-  max-width: 1200px; /* Ajustez selon la largeur maximale souhaitée pour le conteneur */
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 3rem auto;
+  justify-content: center;
+  max-width: 1200px;
+
+  @each $name, $color in $card-colors {
+    .card-color-#{$name} {
+      background-color: $color;
+    }
+  }
 }
 
-.card-color-ocean {
-  background-color: #3574d5; /* Couleur bleue ajustée */
-}
-
-.card-color-jungle {
-  background-color: #25a37e; /* Couleur verte, si besoin d'ajustement */
-}
-
-.card-color-desert {
-  background-color: #fdae84; /* Couleur orange ajustée */
-}
-
-.card-color-arctic {
-  background-color: #d1e2fd; /* Couleur bleue ajustée */
-}
 </style>

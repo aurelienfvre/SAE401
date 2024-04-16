@@ -53,7 +53,9 @@
           />
         </div>
         <div class="form-group">
-          <label for="password">{{ $t('register.password') }} <span class="required">*</span></label>
+          <label for="password">
+            {{ $t('login.password') }} <span class="required">*</span>
+          </label>
           <input
               type="password"
               id="password"
@@ -118,25 +120,24 @@ const submitForm = async () => {
 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .ecolearn-logo {
-  margin-left: -60px; /* Ajustez selon la maquette */
+  margin-left: -60px; // Ajustez selon la maquette
   margin-bottom: -40px;
   padding: 40px;
   position: relative;
   bottom: 35px;
 }
 
-.contact-header h2,
-.contact-header p {
-  text-align: center;
-}
-.contact-header p {
-  margin: 0 0 15px 0;
-}
+.contact-header {
+  h2, p {
+    text-align: center;
+  }
 
-.contact-header p {
-  color: #002773;
+  p {
+    margin: 0 0 15px 0;
+    color: #002773;
+  }
 }
 
 label {
@@ -146,20 +147,18 @@ label {
   margin-bottom: 10px;
 }
 
-
-
 .form-button {
   display: flex;
   justify-content: center;
 }
 
-.form-group.double {
-  display: flex;
-  gap: 10px;
-}
-
 .form-group {
   padding: 10px;
+
+  &.double {
+    display: flex;
+    gap: 10px;
+  }
 }
 
 .input-wrapper {
@@ -177,97 +176,83 @@ textarea {
   box-shadow: none;
   background-color: transparent;
   color: #333;
+
+  &::placeholder {
+    color: #949494;
+  }
 }
 
-input[type="text"]::placeholder,
-input[type="email"]::placeholder,
-input[type="password"]::placeholder,
-textarea::placeholder {
-  color: #949494;
-}
 button[type="submit"] {
-  --color: #333; /* Couleur de base du bouton */
+  --color: #333; // Couleur de base du bouton
   padding: 8px 40px;
   border-radius: 30px;
   border: 1px solid var(--color);
   background-color: #fff;
   cursor: pointer;
-  position: relative; /* Nécessaire pour les pseudo-éléments de survol */
-  overflow: hidden; /* Empêche le débordement du pseudo-élément */
-  color: var(--color); /* Couleur du texte du bouton */
-  transition: color 0.5s; /* Transition pour la couleur du texte */
+  position: relative;
+  overflow: hidden;
+  color: var(--color);
+  transition: color 0.5s;
   z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: 500;
-}
 
-/* Animation de background circulaire au survol */
-button[type="submit"]::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  background: var(--color);
-  height: 150px;
-  width: 200px;
-  border-radius: 50%;
-  top: 100%;
-  left: -100%; /* Démarre de la gauche pour l'animation */
-  transition: all 0.7s;
-}
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: var(--color);
+    height: 150px;
+    width: 200px;
+    border-radius: 50%;
+    top: 100%;
+    left: -100%;
+    transition: all 0.7s;
+  }
 
-/* Change la couleur du texte et déclenche l'animation de background au survol */
-button[type="submit"]:hover {
-  color: #fff;
-}
+  &:hover {
+    color: #fff;
 
-button[type="submit"]:hover::before {
-  top: -30px;
-  left: -30px; /* Anime le background vers le centre */
-}
+    &::before {
+      top: -30px;
+      left: -30px;
+    }
 
-/* Maintient le style du background lors d'une action active/clic */
-button[type="submit"]:active::before {
-  background: #333; /* Couleur de background lors du clic */
-  transition: background 0s;
-}
+    &::after {
+      opacity: 1;
+      transform: translateY(0);
+      color: #fff;
+    }
 
-/* Styles pour l'animation du texte au survol */
-button[type="submit"] span {
-  display: inline-block;
-  transition: transform 0.25s, opacity 0.25s;
-}
+    span {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+  }
 
-button[type="submit"]::after {
-  content: "GO !"; /* Texte qui apparaît au survol */
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  transition: opacity 0.25s, transform 0.25s;
-  transform: translateY(100%);
-  color: #333; /* Assurez-vous que cette couleur est visible sur votre fond */
-  background-color: transparent; /* Transparent pour voir l'animation du background */
-}
+  &:active::before {
+    background: #333;
+    transition: background 0s;
+  }
 
-/* Animation du texte au survol */
-button[type="submit"]:hover::after {
-  opacity: 1;
-  transform: translateY(0);
-  color: #fff;
-}
-
-/* Cache le texte original du bouton lors du survol */
-button[type="submit"]:hover > span {
-  transform: translateY(-100%);
-  opacity: 0;
-
+  &::after {
+    content: "GO !";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.25s, transform 0.25s;
+    transform: translateY(100%);
+    color: #333;
+    background-color: transparent;
+  }
 }
 
 .required {
@@ -283,8 +268,10 @@ button[type="submit"]:hover > span {
   color: #002773;
   text-decoration: none;
   font-weight: 600;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
-.create-account:hover {
-  text-decoration: underline;
-}
+
 </style>

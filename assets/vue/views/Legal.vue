@@ -51,16 +51,16 @@ const { t } = useI18n();
 
 </script>
 
-<style scoped>
-.title {
-  text-align: center;
-  padding: 0 0 40px 0;
-  font-weight: 500;
-}
+<style lang="scss" scoped>
+  .title {
+    text-align: center;
+    padding: 0 0 40px 0;
+    font-weight: 500;
+  }
 
-.section-title {
-  font-weight: bold;
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
+  .section-title {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
 </style>

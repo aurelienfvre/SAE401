@@ -39,7 +39,7 @@ export default {
 </script>
 
 
-<style scoped>
+<style lang="scss" scoped>
 .admin-container {
   display: flex;
   flex-direction: column;
