@@ -56,8 +56,8 @@ export default createStore({
         SET_CURRENT_ANSWERS(state, answers) {
             state.currentAnswers = answers;
         },
-        INCREMENT_SCORE(state, payload) {
-            if (payload.isCorrect) {
+        INCREMENT_SCORE(state, isCorrect) {
+            if (isCorrect) {
                 state.score++;
             }
         },
@@ -67,8 +67,10 @@ export default createStore({
             } else {
                 state.quizFinished = true;
             }
-            // Mettre à jour la progression ici plutôt que lors de la validation de la réponse
-            state.progressPercentage = ((state.currentQuestionIndex + 1) / state.questions.length) * 100;
+        },
+        UPDATE_PROGRESS(state) {
+            const step = 100 / state.questions.length;
+            state.progressPercentage = Math.min(state.progressPercentage + step, 100);
         },
         RESET_QUIZ(state) {
             state.currentQuestionIndex = 0;
@@ -81,9 +83,7 @@ export default createStore({
         FINISH_QUIZ(state) {
             state.quizFinished = true;
             state.progressPercentage = 100; // Assurez-vous d'atteindre 100%
-            if (state.selectedAnswer && state.selectedAnswer.isCorrect) {
-                state.score++;
-            }
+            // Assurez-vous de mettre à jour le score ici si nécessaire
         },
 
     },
@@ -102,6 +102,9 @@ export default createStore({
         validateAnswer({ commit, dispatch }, { answer }) {
             commit('SET_SHOW_TRANSITION', { show: true, type: answer.isCorrect ? 'correct' : 'incorrect' });
             setTimeout(() => {
+                if (answer.isCorrect) {
+                    commit('INCREMENT_SCORE', answer.isCorrect);
+                }
                 dispatch('updateProgress', { isCorrect: answer.isCorrect });
                 commit('SET_SHOW_TRANSITION', { show: false, type: '' });
             }, 2000);
@@ -109,29 +112,33 @@ export default createStore({
         async fetchQuestions({ commit, dispatch }, questions) {
             try {
                 const questionResponses = await Promise.all(
-                    questions.map(q => axios.get(q.replace('/api', ''))) // Assurez-vous que les URLs sont correctes
+                    questions.map(q => axios.get(q.replace('/api', '')))
                 );
                 const questionData = questionResponses.map(res => res.data);
                 commit('SET_QUESTIONS', questionData);
-                // Assurer que toutes les réponses des questions sont chargées
-                await Promise.all(questionData.map(question => {
-                    return dispatch('fetchAnswersForQuestion', question.id);
-                }));
+
+                // S'assurer que les réponses sont chargées pour la première question immédiatement
+                if (questionData.length > 0) {
+                    await dispatch('fetchAnswersForQuestion', questionData[0].id);
+                }
             } catch (error) {
                 console.error('Error fetching questions:', error);
-            }
-            finally {
-                commit('SET_LOADING', false);  // Désactiver l'indicateur de chargement seulement ici
+            } finally {
+                commit('SET_LOADING', false);
             }
         },
-        async fetchAnswersForQuestion({ commit }, questionId) {
+
+        async fetchAnswersForQuestion({ commit, state }, questionId) {
             try {
                 const response = await axios.get(`/answers?question=${questionId}`);
-                commit('SET_CURRENT_ANSWERS', response.data['hydra:member']);
+                if (state.questions[state.currentQuestionIndex].id === questionId) {
+                    commit('SET_CURRENT_ANSWERS', response.data['hydra:member']);
+                }
             } catch (error) {
                 console.error('Error fetching answers for question:', error);
             }
         },
+
 
         fetchUserProgress({ commit }) {
             axios.get('/user_progresses')
@@ -140,25 +147,23 @@ export default createStore({
                 })
                 .catch(error => console.error('Error fetching user progress:', error));
         },
-        updateProgress({ state, commit }, isCorrect) {
+        updateProgress({ commit }, { isCorrect }) {
             commit('NEXT_QUESTION');
-
-
-            try {
-                axios.put(`/user_progresses/${state.userProgress.id}`, {
-                    score: state.score,
-                    progress: state.currentQuestionIndex
-                }).catch(error => console.error('Failed to update user progress:', error));
-            } catch (error) {
-                console.error('Failed to update user progress:', error);
+            commit('UPDATE_PROGRESS');
+        },
+        nextQuestion({ commit, dispatch, state }) {
+            if (state.currentQuestionIndex < state.questions.length - 1) {
+                commit('NEXT_QUESTION');
+                dispatch('fetchAnswersForQuestion', state.questions[state.currentQuestionIndex].id);
+                commit('RESET_EXPLANATION');
+                commit('UPDATE_PROGRESS');
+            } else {
+                dispatch('finishQuiz');
             }
         },
-        nextQuestion({ commit }) {
-            commit('NEXT_QUESTION');
-            commit('RESET_EXPLANATION');  // Assurez-vous que l'explication est cachée pour la prochaine question
-        },
-        finishQuiz({ commit, state }, answer) {
-            commit('FINISH_QUIZ', { isCorrect: answer && answer.isCorrect });
+        finishQuiz({ commit }) {
+            commit('FINISH_QUIZ');
+            commit('UPDATE_PROGRESS');
         },
         resetQuiz({ commit, dispatch }) {
             commit('RESET_QUIZ');
