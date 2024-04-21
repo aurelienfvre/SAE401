@@ -1,5 +1,6 @@
 const Encore = require('@symfony/webpack-encore');
 const path = require('path');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 if (!Encore.isRuntimeEnvironmentConfigured()) {
     Encore.configureRuntimeEnvironment(process.env.NODE_ENV || 'dev');
@@ -32,7 +33,12 @@ Encore
         '@': path.resolve(__dirname, './assets/vue'),
         'vue$': 'vue/dist/vue.esm-bundler.js', // Utiliser la build complète de Vue
     })
-
-;
+Encore.addPlugin(new CompressionPlugin({
+    filename: '[path][base].gz',
+    algorithm: 'gzip',
+    test: /\.(js|css)$/,
+    threshold: 10240,
+    minRatio: 0.8
+}));
 
 module.exports = Encore.getWebpackConfig();
